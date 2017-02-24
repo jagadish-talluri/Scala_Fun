@@ -7,3 +7,10 @@ Scala => Loops
 
 <- Left Arrow called as 'Generator' as it generates the values based on the right hand side
 => This Arrow called as 'rocket'
+
+IF Conditions: 4 Forms
+
+IF
+IF ELSE
+IF ELE IF SELF
+Nested IF statemet
