@@ -1,0 +1,6 @@
+Scala => Loops
+
+3 Types of them:
+  1. While
+  2. DoWhile
+  3. For
