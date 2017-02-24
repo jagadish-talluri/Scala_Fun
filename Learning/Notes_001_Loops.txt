@@ -4,3 +4,6 @@ Scala => Loops
   1. While
   2. DoWhile
   3. For
+
+<- Left Arrow called as 'Generator' as it generates the values based on the right hand side
+=> This Arrow called as 'rocket'
