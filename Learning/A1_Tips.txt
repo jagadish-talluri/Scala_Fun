@@ -64,9 +64,9 @@ a.reduceLeft(_+_)
 
 // filter, used to filter
 // underscore means, placeholder for argument, argument is the input from previous
-// logic need to retrive BOOLEAN
+// logic need to return BOOLEAN
 xs.filter(_%2 == 0)
 
-// logic need to retrive, piplin
+// logic need to retrive even value, pipline style
 xs.filter(_%2 == 0) map { _+ }
 
