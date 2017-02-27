@@ -1,0 +1,72 @@
+// all values will be initialized with 1
+var x,y,z = 1 
+
+// multi value initialization
+var x = 1 ; y = 2 ; z = 3
+
+// multi value initialization, with sugar
+var (x,y,z) = (1,2,3)
+
+// tuple value is given to every variable
+var x,y,z = (1,2,3)
+
+// List - immutable
+var xi = List(1,2,3)
+var xs = List("one", "two", "three")
+var xd = List(1.2, 2.3, 3.4)
+
+// List - value index
+xi(2)
+
+// Alias - even for Types
+type R = Double
+
+// stores a double
+var a:R = 1.2
+
+// range, immutable-range
+(1 to 5)
+(1 untill 6)
+
+// underscore magic, anonymous function, underscore is positionally matched argument
+// below code multiplies every value in the range with 2, underscore tells every value
+// results in a immutable vector
+(1 to 5).map(_*2)
+
+// similar underscore magic, a reduce function always aggregates, you just need to pass the logic of aggreagation
+// it simple adds all the values in the range, 1 + 2 + 3 + 4 + 5 = 15, returns a scalar value
+// only name has LEFT keyword, calculation happens from left to right, that is normal only
+(1 to 5).reduceLeft(_+_)
+
+// if the list is string, it concatenates
+var a = List("one", "two", "three")
+a.reduceLeft(_+_)
+
+// block style anonymous function; to use other variables than the previous ones
+// for every value of 'x' the function performs its transformation
+// below code does the job and returns the value
+(1 to 5).map{x => val y = 2*x; println(y); y}
+
+// anonymous functions, pipeline style
+// instead of dots we use spaces, like using pipes in unix
+// one parameter is expected with one undescore, order of params work
+// 1 + 2 style; instead of 1.+(2) style; "1" is object and "+" is function
+(1 to 5) map {_*2}
+(1 to 5) map {2*_}
+
+// object style
+1.+(2)
+1.+(2).+(3).+(4).+(5)
+1.+(2).-(3).+(1).*(5)
+
+// void, empty parens
+()
+
+// filter, used to filter
+// underscore means, placeholder for argument, argument is the input from previous
+// logic need to retrive BOOLEAN
+xs.filter(_%2 == 0)
+
+// logic need to retrive, piplin
+xs.filter(_%2 == 0) map { _+ }
+
