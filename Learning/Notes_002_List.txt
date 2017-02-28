@@ -135,4 +135,7 @@ res8: List[scala.xml.Elem] = List(<html>upendra</html>, <html>jyothi</html>, <ht
 > x.foldLeft(1)(_*_)
 
 # List - foldLeft, for COUNT, 0 is initial value, c is 1
+scala> y.foldLeft(0)((sum,c) => sum + 1)                                                                                                 res32: Int = 19                                                                                                                         
 
+# underscore tell to discard this param
+scala> y.foldLeft(0)((sum,_) => sum + 1)                                                                                                 res33: Int = 19    
