@@ -1,0 +1,29 @@
+# List - Synopsis
+# Same Type allowed, Immutable, 
+
+# List - create, lisp style, "Nil" is case sensitive keyword, Nil keyword is manadatory as per LISP style
+# :: is cons syntax, head :: tail, head => first element; tail => all other elements
+> val x = 1 :: 2 :: 3 :: 4 :: Nil
+
+# List - create, java style, var or val any thing is fine
+> val x = List(1,2,3,4)
+
+# List - create, mix type, rare use
+> val x = List[Number](1, 2.0, 3d, 0x1)
+
+# List - create, range method, useful
+# store from 1 to 10
+> val x = List.range(1, 10)
+
+# store every 3 element from 1 to 10 ; excludes 10
+> val x = List.range(1, 10, 3)
+
+# List - create, fill method, useful, repeats the values and fills the list
+> val x = List.fill(3)("foo")
+
+# List - create, tabulate method, useful, send a function to fill, 5 => elements in index; n => index element value
+> val x = List.tabulate(5)(n => n+1)
+
+# remember, in both java and scala, index starts with 0
+> val x = List.tabulate(7)(n => n*n)
+
