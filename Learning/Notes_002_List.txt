@@ -93,3 +93,46 @@ y: (List[Int], List[Int]) = (List(),List(1, 2, 3, 4, 5, 6, 7, 8, 9))
 scala> val y = x.partition( a => a > 4 )                                                                                                                                        
 y: (List[Int], List[Int]) = (List(5, 6, 7, 8, 9),List(1, 2, 3, 4))                                                                                                              
 
+# List - map, with a variable, from 1 to 20, every 3 number like 1,2
+> val x = List.range(1, 20, 3)
+> val y = x.map( a => a * 2)
+
+# List - map, without a variable, first underscore will be first parameter, no need of a fake variable
+> val y = x.map(_*20)
+> val y = x.map(_+20)
+
+# List -map, with strings
+scala> val names = List("upendra", "jyothi", "yogitha")                                                                                                                         
+names: List[String] = List(upendra, jyothi, yogitha)                                                                                                                            
+
+scala> names.map(_.toLowerCase())                                                                                                                                               
+res5: List[String] = List(upendra, jyothi, yogitha)                                                                                                                             
+
+scala> names.map(_.toUpperCase())                                                                                                                                               
+res6: List[String] = List(UPENDRA, JYOTHI, YOGITHA) 
+
+scala> names.map(a => <html>a</html>)                                                                                                                                           
+res7: List[scala.xml.Elem] = List(<html>a</html>, <html>a</html>, <html>a</html>)                                                                                               
+                                                                                                                                                                                
+scala> names.map(a => <html>{a}</html>)                                                                                                                                         
+res8: List[scala.xml.Elem] = List(<html>upendra</html>, <html>jyothi</html>, <html>yogitha</html>)                                                                              
+
+# List - reverse
+> x.reverse()
+
+# List - reduceLeft
+> x.reduceLeft(_+_)
+> x.reduceLeft(_*_)
+
+# List - foldLeft, has currying, r is accumilator, c is next value, 0 is initial value
+> val x = List.range(1, 20)
+> x.foldLeft(0)((r,c) => r+c)
+
+# List - foldLeft, shortcut
+> x.foldLeft(0)(_+_)
+
+# List - foldLeft, for multiplicaton, 1 is initial value
+> x.foldLeft(1)(_*_)
+
+# List - foldLeft, for COUNT, 0 is initial value, c is 1
+
