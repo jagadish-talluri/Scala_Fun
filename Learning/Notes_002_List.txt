@@ -72,5 +72,24 @@
 # '>' symbol is making me nuts, has something unknown behind it
 
 # dropWhile - method, stores the opposite of takeWhile
-> val x = x.dropWhile( a => a < 4)
+> val y = x.dropWhile( a => a < 4)
+
+# partiton - method, stores 2 predicates one for true validaton other for false validation, very useful
+> val y =  x.partition( a => a < 4 )
+
+# find - method, rare use, returns the first found element
+> val y = x.find( a => a < 4)
+
+# span vs parition, didn't get it
+scala> val y = x.span( a => a < 4 )                                                                                                                                             
+y: (List[Int], List[Int]) = (List(1, 2, 3),List(4, 5, 6, 7, 8, 9))                                                                                                              
+
+scala> val y = x.partition( a => a < 4)                                                                                                                                         
+y: (List[Int], List[Int]) = (List(1, 2, 3),List(4, 5, 6, 7, 8, 9))                                                                                                              
+
+scala> val y = x.span( a => a > 4 )                                                                                                                                             
+y: (List[Int], List[Int]) = (List(),List(1, 2, 3, 4, 5, 6, 7, 8, 9))                                                                                                            
+
+scala> val y = x.partition( a => a > 4 )                                                                                                                                        
+y: (List[Int], List[Int]) = (List(5, 6, 7, 8, 9),List(1, 2, 3, 4))                                                                                                              
 
