@@ -27,3 +27,50 @@
 # remember, in both java and scala, index starts with 0
 > val x = List.tabulate(7)(n => n*n)
 
+## Operations on List
+# List - prepend
+> val x = List(1,2,3)
+> val y = 0 :: x
+
+# List - append or merge, use ::: to concat
+> val a = List(1, 2, 3)
+> val b = List(4, 5, 6)
+> val c = a ::: b
+> val d = List.concat(a,b)
+
+# List - iteration with foreach
+> val x = List(1, 2, 3)
+> x.foreach {println}
+> x.foreach {print}
+
+# List - iteration with simplified for loop, for every 'a' in 'x' do the print
+> val x = List(1, 2, 3)
+> for(a <- x) println(a)
+
+# we can do some tricks here, loop runs x elements times doing the println (prints nothing)
+> for(a <- x) println
+
+# loop runs , we can do simple arithmetic in the println statement
+> for (a <- x) println(a+1)
+
+# _ underscore is place holder for argument, sum all the elements in the list, without extra variable
+> x.foreach { sum += _}
+
+# use for loop, add all elements, use extra variable, cant use underscore in expanded function
+> for( a <- x ) sum += a
+
+# add condition to the for loop
+> for( a <- x if a%2 == 0 ) println(a)
+
+# apply filter method, one variable, returns List
+> x.filter( a => a%2 == 0 )
+
+# takeWhile - method, only lessthan '<' is working; '>' is not working; may be first element not supposed to be null
+> val x = List.range(1, 10)
+> val y = x.takeWhile( a => a < 4 )
+
+# '>' symbol is making me nuts, has something unknown behind it
+
+# dropWhile - method, stores the opposite of takeWhile
+> val x = x.dropWhile( a => a < 4)
+
