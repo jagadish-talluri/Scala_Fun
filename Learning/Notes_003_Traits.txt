@@ -1,0 +1,304 @@
+Scala Fun:
+----------
+
+1. Demo.scala code file
+=	$ scala Demo.scala  -- some time works without compilation
+	$ scalac Demo.scala -- some times it doest work without compilation
+	
+	What is the matter? Where is the hidden understanding?
+Ans:
+	a. If class is there then we need to compile
+	b. If class is not there then it considered as scala script file and it works
+	
+2. When scalac need to be used? When compilation needed in scala?
+=
+Ans: if classes are there in the code
+
+3. Where main method need to be used?
+=
+Ans: inside object (singleton class)
+
+4. Does the scala code compiles without main method?
+=
+Ans: Yes, it compiles but gives error at runtime as main method not found.
+		the below code is example
+-----------------------------------------------------------------------------------------class DemoClass {
+    var x: Int = 10
+    var y: Int = 20
+    
+    def iPrint() { println("The values of x and y are "+x+" and "+y+" respectively.") }
+}
+
+object DemoObject {
+    var c = new DemoClass();
+    c.iPrint
+}		
+-----------------------------------------------------------------------------------------		
+		
+		
+5. What are the rules of filename to classname to objectname? do they need to be same.
+=
+Ans: as of now, dont know the answer really
+		But filename and objectname can vary, and it works without errors
+		the below code is example
+-----------------------------------------------------------------------------------------HelloWorld.scala
+object HelloJagadish {
+   def main(args: Array[String]) {
+      println("Hello, Jagadish!")
+   }
+}
+-----------------------------------------------------------------------------------------CONSOLE
+sh-4.3$ scala HelloWorld.scala                                                                                                                                                  
+Hello, Jagadish!                                                                                                                                                                
+sh-4.3$ scalac HelloWorld.scala                                                                                                                                                 
+sh-4.3$ scala HelloWorld                                                                                                                                                        
+Hello, world!		
+-----------------------------------------------------------------------------------------		
+		
+6. When you have object and class in the same code, make sure the filename is also same.
+=
+Ans: 
+-----------------------------------------------------------------------------------------DemoClass.scala
+class DemoClass {
+    var x: Int = 10
+    var y: Int = 20
+    
+    def iPrint() { println("The values of x and y are "+x+" and "+y+" respectively.") }
+}
+
+object DemoClass {
+    var c = new DemoClass();
+    def main(args: Array[String]) {c.iPrint}
+}
+-----------------------------------------------------------------------------------------CONSOLE
+sh-4.3$ scalac DemoClass.scala                                                                                                                                                  
+sh-4.3$ scala DemoClass                                                                                                                                                         
+The values of x and y are 10 and 20 respectively.
+-----------------------------------------------------------------------------------------
+
+7. Naming rules for objectname and filename?
+=
+Ans: when using class and object together in the file, objectname need to be exactly same to filename, (classname can be different)
+-----------------------------------------------------------------------------------------DemoClass.scala
+class DemoFun {
+    var x: Int = 10
+    var y: Int = 20
+    
+    def iPrint() { println("The values of x and y are "+x+" and "+y+" respectively.") }
+}
+
+object DemoClass {
+    var c = new DemoFun();
+    def main(args: Array[String]) {c.iPrint}
+}
+-----------------------------------------------------------------------------------------CONSOLE
+sh-4.3$ scalac DemoClass.scala                                                                                                                                                         
+sh-4.3$ scala DemoClass                                                                                                                                                         
+The values of x and y are 10 and 20 respectively.
+-----------------------------------------------------------------------------------------
+
+8. Scala runtime system expects a main method in code. the below code fails with comments at main methond line.
+=
+-----------------------------------------------------------------------------------------DemoClass.scala
+class DemoFun {
+    var x: Int = 10
+    var y: Int = 20
+    
+    def iPrint() { println("The values of x and y are "+x+" and "+y+" respectively.") }
+}
+
+object DemoClass {
+    var c = new DemoFun();
+    c.iPrint
+    //def main(args: Array[String]) {c.iPrint}
+}
+-----------------------------------------------------------------------------------------CONSOLE
+sh-4.3$ scalac DemoClass.scala                                                                                                                                                  
+sh-4.3$ scala DemoClass                                                                                                                                                         
+java.lang.NoSuchMethodException: DemoClass.main([Ljava.lang.String;)                                                                                                            
+        at java.lang.Class.getMethod(Class.java:1786)                                                                                                                           
+        at scala.reflect.internal.util.ScalaClassLoader$class.run(ScalaClassLoader.scala:94)                                                                                    
+        at scala.reflect.internal.util.ScalaClassLoader$URLClassLoader.run(ScalaClassLoader.scala:129)                                                                          
+        at scala.tools.nsc.CommonRunner$class.run(ObjectRunner.scala:22)                                                                                                        
+        at scala.tools.nsc.ObjectRunner$.run(ObjectRunner.scala:39)                                                                                                             
+        at scala.tools.nsc.CommonRunner$class.runAndCatch(ObjectRunner.scala:29)                                                                                                
+        at scala.tools.nsc.ObjectRunner$.runAndCatch(ObjectRunner.scala:39)                                                                                                     
+        at scala.tools.nsc.MainGenericRunner.runTarget$1(MainGenericRunner.scala:65)                                                                                            
+        at scala.tools.nsc.MainGenericRunner.run$1(MainGenericRunner.scala:87)                                                                                                  
+        at scala.tools.nsc.MainGenericRunner.process(MainGenericRunner.scala:98)                                                                                                
+        at scala.tools.nsc.MainGenericRunner$.main(MainGenericRunner.scala:103)                                                                                                 
+        at scala.tools.nsc.MainGenericRunner.main(MainGenericRunner.scala)                                                                                                      
+-----------------------------------------------------------------------------------------DemoClass.scala
+class DemoFun {
+    var x: Int = 10
+    var y: Int = 20
+    
+    def iPrint() { println("The values of x and y are "+x+" and "+y+" respectively.") }
+}
+
+object DemoClass {
+    var c = new DemoFun();
+    c.iPrint
+    def main(args: Array[String]) {c.iPrint}
+}
+-----------------------------------------------------------------------------------------CONSOLE
+sh-4.3$ scalac DemoClass.scala                                                                                                                                                  
+sh-4.3$ scala DemoClass                                                                                                                                                         
+The values of x and y are 10 and 20 respectively.                                                                                                                               
+The values of x and y are 10 and 20 respectively.                                                                                                                               
+-----------------------------------------------------------------------------------------
+
+9. Evaluation of expression in scala code
+=
+Ans: Any where inside class/object definition it can be evaluated (oops)
+		any where in the script (functional)
+
+10. How many point of views are there in scala? So that things will vary?
+=
+Ans:
+	interactive mode => like and interpreter but internally compiler
+	script mode => write the scala commands in a file with .scala extention
+	batch mode => classes and objects are defined in .scala file
+					=> Object Oriented Model of coding
+					=> Functional Model of coding
+
+11. How class with constructors are evalutated?
+=
+Ans: we can directly declare the class with constructor, like the below code:
+		main method doesnt do anything here, its only there to avoid error
+-----------------------------------------------------------------------------------------DemoClass.scala
+class DemoFun(a:Int, b:Int) {
+    var x: Int = a
+    var y: Int = b
+    
+    def iPrint() { println("The values of x and y are "+x+" and "+y+" respectively.") }
+}
+
+object DemoClass {
+    var c = new DemoFun(10,20);
+    var d = new DemoFun(12,24);
+    c.iPrint
+    d.iPrint
+    def main(args: Array[String]) {}
+}
+-----------------------------------------------------------------------------------------CONSOLE
+sh-4.3$ scalac DemoClass.scala                                                                                                                                                  
+sh-4.3$ scala DemoClass                                                                                                                                                         
+The values of x and y are 10 and 20 respectively.                                                                                                                               
+The values of x and y are 12 and 24 respectively.     
+-----------------------------------------------------------------------------------------
+12. Traits Example
+=
+
+-----------------------------------------------------------------------------------------
+trait Equal {
+   def isEqual(x: Any): Boolean
+   def isNotEqual(x: Any): Boolean = !isEqual(x)
+}
+
+class Point(xc: Int, yc: Int) extends Equal {
+   var x: Int = xc
+   var y: Int = yc
+   
+   def isEqual(obj: Any) = obj.isInstanceOf[Point] && obj.asInstanceOf[Point].x == y
+}
+
+object Demo {
+   def main(args: Array[String]) {
+      val p1 = new Point(2, 3)
+      val p2 = new Point(2, 4)
+      val p3 = new Point(3, 3)
+
+      println(p1.isNotEqual(p2))
+      println(p1.isNotEqual(p3))
+      println(p1.isNotEqual(2))
+      println(p1.isNotEqual(3))
+   }
+}
+-----------------------------------------------------------------------------------------
+
+
+13. Traits with Mixin Example
+=
+-----------------------------------------------------------------------------------------
+Mixin Example -> Multiple Inheritence
+
+Object Mixin {
+	def main(a: Array[String]) = {
+		val gQuota = new GeneralQuota
+		gQuota.printQuotaDetail
+		val tQuota = new TatkalQuota
+		tQuota.printQuotaDetail
+		println("Is it Special train: "+tQuota.isSpecialTrain)
+		val lQuota = new LadiesQuota
+		lQuota.printQuotaDetail
+		println("Is it Special train: "+lQuota.isSpecialTrain)
+		lQuota.printTrainInfo
+	}
+	
+	// Abstract Class
+	abstract class AbsInfo {
+		def isSpecialTrain: Boolean
+	}
+	
+	// Trait Object
+	trait MyTrain{
+		def printTrainInfo = {
+			println("Train Number : 12675")
+			println("Train Name : KOVAI EXPRESS")
+		}
+	}
+	
+	// Normal Class
+	class GeneralQuota {
+		def printQuotaDetail = println("General Quota")
+	}
+	
+	// Abstract class with interface method implementation
+	class TatkalQuota extends AbsInfo {
+		def printQuotaDetail = println("Tatkal Quota")
+		def isSpecialTrain:Boolean = false
+	}
+	
+	// Mixin class composition
+	class LadiesQuota extends AbsInfo with MyTrain {
+		def printQuotaDetail = println("Ladies Quota")
+		def isSpecialTrain:Boolean = false
+	}
+}
+-----------------------------------------------------------------------------------------
+sh-4.3$ scalac Mixin.scala                                                                                                                                                      
+sh-4.3$ scala Mixin                                                                                                                                                             
+General Quota                                                                                                                                                                   
+Tatkal Quota                                                                                                                                                                    
+Is it Special train: false                                                                                                                                                      
+Ladies Quota                                                                                                                                                                    
+Is it Special train: false                                                                                                                                                      
+Train Number : 12675                                                                                                                                                            
+Train Name : KOVAI EXPRESS                                                                                                                                                      
+-----------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
