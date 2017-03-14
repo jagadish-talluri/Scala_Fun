@@ -278,6 +278,324 @@ Train Number : 12675
 Train Name : KOVAI EXPRESS                                                                                                                                                      
 -----------------------------------------------------------------------------------------
 
+=========================================================================================SOME MORE SCALA MAGIC
+*****Object Oriented*****
+=========================================================================================SOME MORE SCALA MAGIC
+1. Create a simple class
+=
+-----------------------------------------------------------------------------------------Demo.scala
+class User(n: String) {
+    val name: String = n
+}
+
+var u = new User(n = "Frank")
+-----------------------------------------------------------------------------------------SCALA CONSOLE
+
+-----------------------------------------------------------------------------------------CONSOLE
+sh-4.3$ scala Demo.scala                                                                                                                                                        
+sh-4.3$ scalac Demo.scala                                                                                                                                                       
+Demo.scala:5: error: expected class or object definition                                                                                                                        
+var u = new User(n = "Frank")                                                                                                                                                   
+^                                                                                                                                                                               
+one error found
+// Note: Class Name and File Name are not the same                                                                                                                                                                
+-----------------------------------------------------------------------------------------
+2. Scala Console Vs Scala Script File
+=
+-----------------------------------------------------------------------------------------Demo.scala
+class User(n: String) {
+    val name: String = n
+}
+
+var u = new User(n = "Frank")
+
+u
+
+u.name
+-----------------------------------------------------------------------------------------CONSOLE
+sh-4.3$ scala Demo.scala                                                                                                                                                        
+/home/cg/root/Demo.scala:7: warning: a pure expression does nothing in statement position; you may be omitting necessary parentheses                                            
+u                                                                                                                                                                               
+^                                                                                                                                                                               
+one warning found                                                                                                                                                               
+-----------------------------------------------------------------------------------------Demo.scala
+class User(n: String) {
+    val name: String = n
+}
+
+var u = new User(n = "Frank")
+
+u
+
+u.name
+
+println(u)
+
+println(u.name)
+-----------------------------------------------------------------------------------------CONSOLE
+sh-4.3$ scala Demo.scala                                                                                                                                                        
+/home/cg/root/Demo.scala:7: warning: a pure expression does nothing in statement position; you may be omitting necessary parentheses                                            
+u                                                                                                                                                                               
+^                                                                                                                                                                               
+one warning found                                                                                                                                                               
+Main$$anon$1$User@7a46a697                                                                                                                                                      
+Frank                                                                                                                                                                           
+-----------------------------------------------------------------------------------------SCALA CONSOLE
+scala> var u = new User(n = "Frank")                                                                                                                                            
+u: User = User@3bcbb589                                                                                                                                                         
+                                                                                                                                                                                
+scala> u                                                                                                                                                                        
+res1: User = User@3bcbb589                                                                                                                                                      
+                                                                                                                                                                                
+scala> u.name                                                                                                                                                                   
+res2: String = Frank                                                                                                                                                            
+                                                                                                                                                                                
+scala> var u1 = new User("Mark")                                                                                                                                                
+u1: User = User@74ad8d05                                                                                                                                                        
+                                                                                                                                                                                
+scala> u1.name                                                                                                                                                                  
+res3: String = Mark                                                                                                                                                             
+
+scala> println(u)                                                                                                                                                               
+$line4.$read$$iw$$iw$User@3bcbb589                                                                                                                                              
+                                                                                                                                                                                
+scala> println(u.name)                                                                                                                                                          
+Frank                                                                                                                                                                           
+
+scala> u.name                                                                                                                                                                   
+res6: String = Frank                                                                                                                                                            
+                                                                                                                                                                                
+scala> u.name = "Hello"                                                                                                                                                         
+<console>:12: error: reassignment to val                                                                                                                                        
+       u.name = "Hello"                                                                                                                                                         
+              ^                                                                                                                                                                 
+// Note: Scala shell always returns a value. Nothing is left.
+// Note: Constructor Syntax, With Named Parameters and Normal Parameters
+// Note: Default type is VAL for the arguments, so you cannot change them
+-----------------------------------------------------------------------------------------
+3. Scala classes and constructors, Consice string operations
+=
+-----------------------------------------------------------------------------------------SCALA CONSOLE
+scala> class Cat(val name: String) {                                                                                                                                            
+     |  def greet: String = {                                                                                                                                                   
+     |          s"My name is $name"                                                                                                                                             
+     | }                                                                                                                                                                        
+     | }                                                                                                                                                                        
+defined class Cat                                                                                                                                                               
+                                                                                                                                                                                
+scala> var myCat = new Cat(name = "Garfield")                                                                                                                                   
+myCat: Cat = Cat@1e01b133                                                                                                                                                       
+                                                                                                                                                                                
+scala> var yourCat = new Cat("Tom")                                                                                                                                             
+yourCat: Cat = Cat@3b4086c1                                                                                                                                                     
+                                                                                                                                                                                
+scala> var stuartCat = new Cat                                                                                                                                                  
+<console>:11: error: not enough arguments for constructor Cat: (name: String)Cat.                                                                                               
+Unspecified value parameter name.                                                                                                                                               
+       var stuartCat = new Cat                                                                                                                                                  
+                       ^                                                                                                                                                        
+scala> println {                                                                                                                                                                
+     |  myCat.greet                                                                                                                                                             
+     | }                                                                                                                                                                        
+My name is Garfield                                                                                                                                                             
+                                                                                                                                                                                
+scala> println(yourCat.greet)                                                                                                                                                   
+My name is Tom                                                                                                                                                                  
+
+// Note: Different ways of passing params to constructor, with name or without name
+// Note: Different ways of using the println function, with {} or ()
+// Note: Concise way of string expression, with $param-name
+-----------------------------------------------------------------------------------------
+4. Scala concise vs normal string expression
+=
+-----------------------------------------------------------------------------------------SCALA CONSOLE
+scala> class Cat                                                                                                                                                                
+defined class Cat                                                                                                                                                               
+                                                                                                                                                                                
+scala> class                                                                                                                                                                    
+     | Cat(val name: String) {                                                                                                                                                  
+     |  def greet: String = s"My name is $name"                                                                                                                                 
+     |  def wish: String = "I love to be with myself a.k.a " + name                                                                                                             
+     |  def hello { println("Anybody said, Hello!") }                                                                                                                           
+     | }                                                                                                                                                                        
+defined class Cat                                                                                                                                                               
+
+scala> var c1 = new Cat("Tommy")                                                                                                                                                
+c1: Cat = Cat@76b305e1                                                                                                                                                          
+                                                                                                                                                                                
+scala> var c2 = new Cat("Lucy")                                                                                                                                                 
+c2: Cat = Cat@2fa212df                                                                                                                                                          
+                                                                                                                                                                                
+scala> c1.greet                                                                                                                                                                 
+res9: String = My name is Tommy                                                                                                                                                 
+                                                                                                                                                                                
+scala> c1.wish                                                                                                                                                                  
+res10: String = I love to be with myself a.k.a Tommy                                                                                                                            
+                                                                                                                                                                                
+scala> c1.hello                                                                                                                                                                 
+Anybody said, Hello!                                                                                                                                                            
+
+scala> print(c1.wish)                                                                                                                                                           
+I love to be with myself a.k.a Tommy                                                                                                                                            
+
+scala> print(c1.hello)                                                                                                                                                          
+Anybody said, Hello!                                                                                                                                                            
+()                                                                                                                                                                              
+
+// Note: c1.hello, doesn't return, it is not an expression, and it doesn't have return type, it is procedure
+// Note: class and Cat are on 2 lines
+// Note: greet and wish methods use 2 differnt ways of string expression
+// Note: print method behaviour, it executes first, then prints the return value next. Notice no return value as () for procedure c1.hello
+
+
+
+-----------------------------------------------------------------------------------------
+5. Classes Vs Case Sensitive
+=
+-----------------------------------------------------------------------------------------SCALA CONSOLE
+scala> class cat {                                                                                                                                                              
+     |  var name: String = "Tom"                                                                                                                                                
+     |  def greet: String = s"My name is $name"                                                                                                                                 
+     |  def hello = println("Hello All")                                                                                                                                        
+     |  def bolo = "Hello"                                                                                                                                                      
+     | }                                                                                                                                                                        
+defined class cat                                                                                                                                                               
+                                                                                                                                                                                
+scala> cat.hello                                                                                                                                                                
+<console>:11: error: not found: value cat                                                                                                                                       
+       cat.hello                                                                                                                                                                
+       ^                                                                                                                                                                        
+scala> var c3 = new Cat                                                                                                                                                         
+<console>:11: error: not enough arguments for constructor Cat: (name: String)Cat.                                                                                               
+Unspecified value parameter name.                                                                                                                                               
+       var c3 = new Cat                                                                                                                                                         
+                ^                                                                                                                                                               
+                                                                                                                                                                                
+scala> var c3 = new cat                                                                                                                                                         
+c3: cat = cat@19540247                                                                                                                                                          
+                                                                                                                                                                                
+scala> c3.name = "Snowbell"                                                                                                                                                     
+c3.name: String = Snowbell                                                                                                                                                      
+
+scala> c3.greet                                                                                                                                                                 
+res15: String = My name is Snowbell                                                                                                                                             
+                                                                                                                                                                                
+scala> c3.wish                                                                                                                                                                  
+<console>:13: error: value wish is not a member of cat                                                                                                                          
+       c3.wish                                                                                                                                                                  
+          ^                                                                                                                                                                     
+                                                                                                                                                                                
+scala> c3.hello                                                                                                                                                                 
+Hello All                                                                                                                                                                       
+                                                                                                                                                                                
+scala> c3.bolo                                                                                                                                                                  
+res18: String = Hello                                                                                                                                                           
+	   
+// Note: cat class must be instantiated to be used
+// Note: class name can start with small case, ex: cat, but dont use it
+// Note: scala is case sensitive, ex: cat and Cat are 2 different classes
+// Note: hello and bolo, one returns value other doesn't
+// Note: throws error if member not found, c3.wish
+-----------------------------------------------------------------------------------------
+6. Classes vs Errors
+=
+-----------------------------------------------------------------------------------------SCALA CONSOLE
+scala> class cat(s:String) { def one = s"Hello dear $s; def two { s"Hello Kitty"} }                                                                                             
+<console>:1: error: unclosed string literal                                                                                                                                     
+class cat(s:String) { def one = s"Hello dear $s; def two { s"Hello Kitty"} }                                                                                                    
+                                                                         ^                                                                                                      
+                                                                                                                                                                                
+scala> class cat(s:String) { def two { "Hello Kitty" } }                                                                                                                        
+<console>:10: warning: a pure expression does nothing in statement position; you may be omitting necessary parentheses                                                          
+       class cat(s:String) { def two { "Hello Kitty" } }                                                                                                                        
+                                       ^                                                                                                                                        
+defined class cat                                                                                                                                                               
+                                                                                                                                                                                
+scala> var c = new cat("Tom")                                                                                                                                                   
+c: cat = cat@c22cf4d                                                                                                                                                            
+
+scala> c.two                                                                                                                                                                    
+                                                                                                                                                                                
+scala> class cat(s:String){ def one = s"My Kitty Name is $s" }                                                                                                                  
+defined class cat                                                                                                                                                               
+                                                                                                                                                                                
+scala> var c11 = new cat("Tom")                                                                                                                                                 
+c11: cat = cat@7a791e8b                                                                                                                                                         
+                                                                                                                                                                                
+scala> c11.one                                                                                                                                                                  
+res20: String = My Kitty Name is Tom                                                                                                                                            
+                                                                                                                                                                                
+scala> class cat { def two = s"My Kitty" }                                                                                                                                      
+defined class cat                                                                                                                                                               
+
+scala> var c12 = new cat("Meow")                                                                                                                                                
+<console>:11: error: too many arguments for constructor cat: ()cat                                                                                                              
+       var c12 = new cat("Meow")                                                                                                                                                
+                 ^                                                                                                                                                              
+                                                                                                                                                                                
+scala> var c12 = new cat                                                                                                                                                        
+c12: cat = cat@25e01756                                                                                                                                                         
+                                                                                                                                                                                
+scala> cat.two                                                                                                                                                                  
+<console>:11: error: not found: value cat                                                                                                                                       
+       cat.two                                                                                                                                                                  
+       ^                                                                                                                                                                        
+                                                                                                                                                                                
+scala> c12.two                                                                                                                                                                  
+res22: String = My Kitty                                                                                                                                                        
+
+// Note: c.two, doesnt do any thing
+// Note: concise string expression doesnt need a param always
+// Note: observe the warning of UNIT
+-----------------------------------------------------------------------------------------
+7. Mixing of different scala data structures
+=
+-----------------------------------------------------------------------------------------SCALA CONSOLE
+scala> class Singer(var name: String)                                                                                                                                           
+defined class Singer                                                                                                                                                            
+                                                                                                                                                                                
+scala> val m = new Singer("miley")                                                                                                                                              
+m: Singer = Singer@2246bfd1                                                                                                                                                     
+                                                                                                                                                                                
+scala> val b = new Singer("bradley")                                                                                                                                            
+b: Singer = Singer@17125ea9                                                                                                                                                     
+                                                                                                                                                                                
+scala> val singers = List(m, b)                                                                                                                                                 
+singers: List[Singer] = List(Singer@2246bfd1, Singer@17125ea9)                                                                                                                  
+                                                                                                                                                                                
+scala> println(singers.map(s=>s.name))                                                                                                                                          
+List(miley, bradley)                                                                                                                                                            
+
+scala> println {                                                                                                                                                                
+     |  singers.map { (s: Singer) => s.name }                                                                                                                                   
+     | }                                                                                                                                                                        
+List(miley, bradley)                                                                                                                                                            
+
+
+// Note: singers objects are there in singers list
+// Note: concise style of class declaration
+// Note: println {}, can have a code block of execution
+// Note: map method in LIST object
+// Note: usage of map methods in 2 forms
+// Note: noneed to give DATA TYPE for s
+
+-----------------------------------------------------------------------------------------
+8. Arguments : mutable, immutable, default, one time
+=
+-----------------------------------------------------------------------------------------
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+
+
+
 
 
 
