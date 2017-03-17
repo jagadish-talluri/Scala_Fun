@@ -1,0 +1,118 @@
+Scala Fun:
+---------
+
+// Scala Documentation, Helpful Links, Examples, :help, all about lost and found information about the language
+
+1. inbuild help from shell
+=
+-----------------------------------------------------------------------------------------
+scala> :help                                                                                                                                                                    
+All commands can be abbreviated, e.g., :he instead of :help.                                                                                                                    
+:edit <id>|<line>        edit history                                                                                                                                           
+:help [command]          print this summary or command-specific help                                                                                                            
+:history [num]           show the history (optional num is commands to show)                                                                                                    
+:h? <string>             search the history                                                                                                                                     
+:imports [name name ...] show import history, identifying sources of names                                                                                                      
+:implicits [-v]          show the implicits in scope                                                                                                                            
+:javap <path|class>      disassemble a file or class name                                                                                                                       
+:line <id>|<line>        place line(s) at the end of history                                                                                                                    
+:load <path>             interpret lines in a file                                                                                                                              
+:paste [-raw] [path]     enter paste mode or paste a file                                                                                                                       
+:power                   enable power user mode                                                                                                                                 
+:quit                    exit the interpreter                                                                                                                                   
+:replay [options]        reset the repl and replay all previous commands                                                                                                        
+:require <path>          add a jar to the classpath                                                                                                                             
+:reset [options]         reset the repl to its initial state, forgetting all session entries                                                                                    
+:save <path>             save replayable session to a file                                                                                                                      
+:sh <command line>       run a shell command (result is implicitly => List[String])                                                                                             
+:settings <options>      update compiler options, if possible; see reset                                                                                                        
+:silent                  disable/enable automatic printing of results                                                                                                           
+:type [-v] <expr>        display the type of an expression without evaluating it                                                                                                
+:kind [-v] <expr>        display the kind of expression's type                                                                                                                  
+:warnings                show the suppressed warnings from the most recent line which had any                                                                                   
+-----------------------------------------------------------------------------------------
+
+2. some utility commands which are useful
+=
+-----------------------------------------------------------------------------------------
+:kind [-v] <expr>        display the kind of expression's type                                                                                                                  
+-----------------------------------------------------------------------------------------
+scala> var a = 10                                                                                                                                                               
+a: Int = 10                                                                                                                                                                     
+                                                                                                                                                                                
+scala> 10                                                                                                                                                                       
+res23: Int = 10                                                                                                                                                                 
+                                                                                                                                                                                
+scala> :kind a                                                                                                                                                                  
+scala.Int's kind is A                                                                                                                                                           
+                                                                                                                                                                                
+scala> var b = List(1,2)                                                                                                                                                        
+b: List[Int] = List(1, 2)                                                                                                                                                       
+                                                                                                                                                                                
+scala> :kind b                                                                                                                                                                  
+scala.collection.immutable.List's kind is A                                                                                                                                     
+                                                                                                                                                                                
+scala> :kind 1 to 10                                                                                                                                                            
+scala.collection.immutable.Range$Inclusive's kind is A                                                                                                                          
+                                                                                                                                                                                
+scala> :kind 1 until 10                                                                                                                                                         
+scala.collection.immutable.Range's kind is A                                                                                                                                    
+
+scala> :kind -v 1 to 10                                                                                                                                                         
+scala.collection.immutable.Range$Inclusive's kind is A                                                                                                                          
+*                                                                                                                                                                               
+This is a proper type.                                                                                                                                                          
+
+// Note: we can use this command to see the type information of a variable
+-----------------------------------------------------------------------------------------
+:reset [options]         reset the repl to its initial state, forgetting all session entries                                                                                    
+-----------------------------------------------------------------------------------------
+
+
+
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+3. Different Ways to execute scala code
+=
+-----------------------------------------------------------------------------------------
+Ways:
+	1. Scala Shell => REPL => kind of interpreter, takes standard input as instructions => interactive mode; ex: "scala>"
+	2. Scala Interpreter => for files as input for instructions => (.scala preferable)file contains scala commands => batch mode; ex: "$ scala first.scala"
+	3. Scala Compiler => 2 step process => first compile then execute => batch mode; ex: "$scalac first.scala" and "$scala first"
+	4. Java Interpreter => we have bytecode from "scalac" compiler use it as input => batch mode; ex: "$java -cp $SCALA_HOME/lib/scala-library.jar first"
+	5. Scala Worksheet => by using eclipse => REPL on steriods => interactive mode; ex: gui example
+-----------------------------------------------------------------------------------------
+
+4. Different Ways to think in scala (for the purpose of coding)
+=
+-----------------------------------------------------------------------------------------
+Ways:
+	1. PURE Object Oriented Way
+	2. PURE Functional Oriented Way
+	3. FUSION of both OOP and FP
+-----------------------------------------------------------------------------------------
+
+5. Different Ways to write the code in scala
+=
+-----------------------------------------------------------------------------------------
+Ways:
+	1. Interactive => REPL, Scala Worksheet
+	2. Batch => scala first.scala, scalac first.scala, scala first, java first
+
+6. Different Ways to use editors for scala
+=
+Ways:
+	1. Notepad or Notepad++; plain and simple editors
+	2. Atom, Sublime; plain and some features of an IDE
+	3. Eclipse, SBT; complex and full featured IDE
+
+
+
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+
+
