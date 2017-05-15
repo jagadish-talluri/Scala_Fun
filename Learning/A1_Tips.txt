@@ -70,3 +70,86 @@ xs.filter(_%2 == 0)
 // logic need to retrive even value, pipline style
 xs.filter(_%2 == 0) map { _+ }
 
+
+Scala Fun:
+---------
+
+1. println vs even more
+=
+-----------------------------------------------------------------------------------------SCALA CONSOLE
+scala> println("hello")                                                                                                                                                         
+hello                                                                                                                                                                           
+                                                                                                                                                                                
+scala> println( {"hello"} )                                                                                                                                                     
+hello                                                                                                                                                                           
+                                                                                                                                                                                
+scala> println( { { "hello" } } )                                                                                                                                               
+hello                                                                                                                                                                           
+
+scala> println( { var i = 0; for( e <- 1 to 20) i+=e; {i} } )                                                                                                                   
+210                                                                                                                                                                             
+                                                                                                                                                                                
+scala> 20*21/2                                                                                                                                                                  
+res4: Int = 210     
+
+scala> println( { var i = 10; i = 11 } )                                                                                                                                        
+()                                                                                                                                                                              
+                                                                                                                                                            
+scala> println()                                                                                                                                                                
+                                                                                                                                                                                
+scala> println(  )                                                                                                                                                              
+                                                                                                                                                                                
+scala> { println() }                                                                                                                                                            
+                                                                                                                                                                                
+// Note: println is just another normal function
+// Note: it can be more in scala, you can use code blocks in it, they must return a value
+// Note: if its not returning a value, it is considered as void and nothing is printed, no compile or runtime error
+// Note: last 3 are executing and returning nothing
+-----------------------------------------------------------------------------------------
+
+2. map function vs even more
+=
+-----------------------------------------------------------------------------------------SCALA CONSOLE
+scala> var a = List(1,2)                                                                                                                                                        
+a: List[Int] = List(1, 2)                                                                                                                                                       
+                                                                                                                                                                                
+scala> a.map( e => e + 1)                                                                                                                                                       
+res10: List[Int] = List(2, 3)                                                                                                                                                   
+                                                                                                                                                                                
+scala> a.map( { var i = 10; e => e + i } )                                                                                                                                      
+res11: List[Int] = List(11, 12)                                                                                                                                                 
+
+scala> var a = 10                                                                                                                                                               
+a: Int = 10                                                                                                                                                                     
+                                                                                                                                                                                
+scala> a.map( e => e + 1)                                                                                                                                                       
+<console>:12: error: value map is not a member of Int                                                                                                                           
+       a.map( e => e + 1)                                                                                                                                                       
+         ^                                                                                                                                                                      
+
+scala> a.map(1)                                                                                                                                                                 
+<console>:12: error: type mismatch;                                                                                                                                             
+ found   : Int(1)                                                                                                                                                               
+ required: Int => ?                                                                                                                                                             
+       a.map(1)                                                                                                                                                                 
+             ^                                                                                                                                                                  
+scala> a.map( i => i)                                                                                                                                                           
+res13: List[Int] = List(1, 2)                                                                                                                                                   
+
+// Note: map() function is just like another function to work with
+// Note: like println(), map() also allows us to put code blocks inside it
+// Note: map() or reduce() functions work on collections, so only collection objects have these functions
+// Note: like println(), which expects a return value to be used as input param, map() expects a function to be a parameter
+// Note: a function as a parameter is represented by rocket("=>")
+
+
+
+
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
